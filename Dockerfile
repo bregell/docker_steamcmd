@@ -13,17 +13,11 @@ RUN apt-get update \
 		ca-certificates \
 		apt-utils \
 		sed
-RUN useradd -m steam
-USER steam
-RUN mkdir -p /home/steam/steamcmd \
-	&& cd /home/steam/steamcmd \
+RUN mkdir -p /home/root/steamcmd \
+	&& cd /home/root/steamcmd \
 	&& wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -
-USER root
 RUN apt-get clean autoclean \
 	&& apt-get autoremove -y \
 	&& rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-# Switch to user steam
-USER steam
-
-VOLUME /home/steam/steamcmd
+VOLUME /home/root/steamcmd
