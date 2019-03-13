@@ -11,7 +11,8 @@ RUN apt-get update \
 		lib32gcc1 \
 		wget \
 		ca-certificates \
-		apt-utils
+		apt-utils \
+		sed
 RUN useradd -m steam
 USER steam
 RUN mkdir -p /home/steam/steamcmd \
